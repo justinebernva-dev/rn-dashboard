@@ -96,7 +96,7 @@ st.markdown("""
         box-shadow: 0 6px 20px rgba(0, 242, 254, 0.5);
     }
     </style>
-""", unsafe_html=True)
+""", unsafe_allow_html=True)
 
 # --- SIDEBAR BRANDING ---
 with st.sidebar:

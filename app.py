@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 
-# Set up page configurations with a clean layout
+# Set up page configurations with a custom title and business suitcase icon
 st.set_page_config(
     page_title="RN Workspace Central",
     page_icon="💼",
@@ -10,9 +10,15 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- CORPORATE BRANDING THEMING (WHITE, RED, GRAY) ---
+# --- CORPORATE BRANDING THEMING & COMPLETE STREAMLIT WHITE-LABELING ---
 st.markdown("""
     <style>
+    /* HIDE STREAMLIT LOGO, HEADER, FOOTER, AND MAIN MENU BUTTONS */
+    #MainMenu {visibility: hidden;}
+    header {visibility: hidden;}
+    footer {visibility: hidden;}
+    [data-testid="stDecoration"] {display: none;}
+    
     /* Clean white background and professional gray text */
     .stApp {
         background-color: #ffffff;
@@ -137,7 +143,7 @@ with tab1:
             st.metric("Total Portfolios", len(df_agreements))
             
             csv_agreements = df_agreements.to_csv(index=False).encode('utf-8')
-            st.download_button("📥 Export Master File", csv_agreements, "agreements.csv", "text/csv")
+            st.download_button("📥 Export Master File", csv_agreements, "RN Dashboard - Client Agreements.csv", "text/csv")
             st.markdown("<br>", unsafe_allow_html=True)
             
             # Drill-down by Client Name
@@ -161,7 +167,7 @@ with tab1:
             st.metric("Profiles Analyzed", len(df_benchmarks))
             
             csv_benchmarks = df_benchmarks.to_csv(index=False).encode('utf-8')
-            st.download_button("📥 Export Master File", csv_benchmarks, "benchmarks.csv", "text/csv")
+            st.download_button("📥 Export Master File", csv_benchmarks, "RN Dashboard - Benchmarking.csv", "text/csv")
             st.markdown("<br>", unsafe_allow_html=True)
             
             # Drill-down by Business/Client Name
